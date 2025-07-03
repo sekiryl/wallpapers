@@ -21,7 +21,7 @@ def generate_previews():
                 try:
                     with Image.open(file) as img:
                         preview = img.resize((480, int(480 * img.height / img.width)))
-                        preview.save(preview_path, "JPEG", quality=85)
+                        preview.convert("RGB").save(preview_path, "JPEG", quality=85)
                         print(f"  - Created preview: {preview_path}")
                 except Exception as e:
                     print(f"  ! Error processing {file}: {e}")
