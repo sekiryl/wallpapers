@@ -42,6 +42,17 @@ def build_html():
     print(f"[+] Generating HTML file at {HTML_FILE}")
     with open(HTML_FILE, "w") as f:
         f.write("<!DOCTYPE html>\n<html>\n<head>\n")
+        f.write(
+            """
+<!-- Favicon Meta -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<meta name="theme-color" content="#d4875d">
+"""
+        )
         f.write("<meta charset='UTF-8'>\n<title>Sekiryl's Wallpapers</title>\n")
         f.write(
             """
@@ -100,7 +111,13 @@ footer {
 """
         )
         f.write(
-            f"<h1>Wallpapers by Sekiryl</h1>\n<p>Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>\n"
+            f"""
+        <div style="display: flex; align-items: center; gap: 1em;">
+          <img src="assets/images/logo.png" alt="Logo" style="height: 64px;">
+          <h1 style="margin: 0;">Wallpapers by Sekiryl</h1>
+        </div>
+        <p>Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+        """
         )
 
         for folder in sorted(WALLPAPER_DIR.iterdir()):
