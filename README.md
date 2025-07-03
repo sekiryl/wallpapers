@@ -1,7 +1,7 @@
-<h3 align="center">
-	<img src="./assets/images/logo.png" width="100" alt="Logo"/><br/>
+<h1 align="center">
+	<img src="./assets/images/logo.png" width="100" alt="Logo"/></br>
 	Sekiryl's Wallpapers
-</h3>
+</h1>
 
 A curated collection of wallpapers designed by Sekiryl. All wallpapers are previewed and categorized on the [website](https://walls.sekiryl.is-a.dev). Includes PNGs and optional source `.xcf` files.
 
