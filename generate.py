@@ -20,7 +20,7 @@ def generate_previews():
             if not preview_path.exists():
                 try:
                     with Image.open(file) as img:
-                        preview = img.resize((480, int(480 * img.height / img.width)))
+                        preview = img.resize((720, int(720 * img.height / img.width)))
                         preview.convert("RGB").save(preview_path, "JPEG", quality=85)
                         print(f"  - Created preview: {preview_path}")
                 except Exception as e:
