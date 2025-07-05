@@ -37,6 +37,7 @@ def build_html():
     print(f"[+] Generating HTML file at {HTML_FILE}")
     with open(HTML_FILE, "w") as f:
         # HTML Head Section
+        last_updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         f.write(
             """<!DOCTYPE html>
 <html lang="en">
@@ -297,7 +298,7 @@ def build_html():
             <img src="assets/images/logo.png" alt="Logo" class="logo">
             <div class="header-content">
                 <h1>Sekiryl's Wallpapers</h1>
-                <span class="last-updated">Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</span>
+                <span class="last-updated">Last updated: {last_updated}</span>
             </div>
         </header>
         
