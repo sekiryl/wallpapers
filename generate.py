@@ -35,11 +35,13 @@ def format_wallpaper_name(filename):
 
 def build_html():
     print(f"[+] Generating HTML file at {HTML_FILE}")
+    last_updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    current_year = datetime.now().year
+
     with open(HTML_FILE, "w") as f:
         # HTML Head Section
-        last_updated = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         f.write(
-            """<!DOCTYPE html>
+            f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -55,7 +57,7 @@ def build_html():
     <meta name="theme-color" content="#d4875d">
     
     <style>
-        :root {
+        :root {{
             --base: #231e1c;
             --mantle: #1a1614;
             --crust: #0f0d0c;
@@ -73,15 +75,15 @@ def build_html():
             --blue: #3a5a7a;
             --teal: #4a8a8a;
             --pink: #b26888;
-        }
+        }}
         
-        * {
+        * {{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+        }}
         
-        body {
+        body {{
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background: linear-gradient(135deg, var(--mantle) 0%, var(--base) 100%);
             color: var(--text);
@@ -89,33 +91,33 @@ def build_html():
             min-height: 100vh;
             padding: 2rem 1rem;
             background-attachment: fixed;
-        }
+        }}
         
-        .container {
+        .container {{
             max-width: 1400px;
             margin: 0 auto;
-        }
+        }}
         
-        header {
+        header {{
             display: flex;
             align-items: center;
             gap: 1.5rem;
             margin-bottom: 2.5rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--surface0);
-        }
+        }}
         
-        .logo {
+        .logo {{
             height: 80px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
+        }}
         
-        .header-content {
+        .header-content {{
             flex: 1;
-        }
+        }}
         
-        h1 {
+        h1 {{
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -124,30 +126,30 @@ def build_html():
             background-clip: text;
             color: transparent;
             margin-bottom: 0.5rem;
-        }
+        }}
         
-        .last-updated {
+        .last-updated {{
             color: var(--subtext1);
             font-size: 1rem;
             display: block;
             margin-top: 0.25rem;
-        }
+        }}
         
-        .intro {
+        .intro {{
             background: var(--surface0);
             padding: 1.5rem;
             border-radius: 12px;
             margin-bottom: 3rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             border: 1px solid var(--overlay0);
-        }
+        }}
         
-        .intro p {
+        .intro p {{
             margin-bottom: 1rem;
             font-size: 1.05rem;
-        }
+        }}
         
-        .license {
+        .license {{
             display: inline-block;
             background: var(--surface1);
             padding: 0.3rem 0.8rem;
@@ -155,9 +157,9 @@ def build_html():
             font-size: 0.85rem;
             margin-top: 0.5rem;
             border: 1px solid var(--overlay1);
-        }
+        }}
         
-        h2 {
+        h2 {{
             font-size: 1.8rem;
             margin: 2.5rem 0 1.5rem;
             padding-bottom: 0.5rem;
@@ -165,9 +167,9 @@ def build_html():
             color: var(--subtext1);
             text-transform: capitalize;
             position: relative;
-        }
+        }}
         
-        h2::after {
+        h2::after {{
             content: '';
             position: absolute;
             bottom: -2px;
@@ -175,60 +177,60 @@ def build_html():
             width: 80px;
             height: 2px;
             background: var(--lavender);
-        }
+        }}
         
-        .wallpaper-grid {
+        .wallpaper-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
-        }
+        }}
         
-        .wallpaper-item {
+        .wallpaper-item {{
             background: var(--surface0);
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
             border: 1px solid var(--overlay0);
-        }
+        }}
         
-        .wallpaper-item:hover {
+        .wallpaper-item:hover {{
             transform: translateY(-8px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
             border-color: var(--overlay1);
-        }
+        }}
         
-        .wallpaper-preview {
+        .wallpaper-preview {{
             width: 100%;
             height: 200px;
             object-fit: cover;
             display: block;
             transition: transform 0.4s ease;
-        }
+        }}
         
-        .wallpaper-item:hover .wallpaper-preview {
+        .wallpaper-item:hover .wallpaper-preview {{
             transform: scale(1.03);
-        }
+        }}
         
-        .wallpaper-content {
+        .wallpaper-content {{
             padding: 1.2rem;
-        }
+        }}
         
-        .wallpaper-title {
+        .wallpaper-title {{
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.8rem;
             color: var(--subtext1);
-        }
+        }}
         
-        .button-group {
+        .button-group {{
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
-        }
+        }}
         
-        .button {
+        .button {{
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -239,57 +241,57 @@ def build_html():
             transition: all 0.2s ease;
             font-size: 0.95rem;
             border: 1px solid transparent;
-        }
+        }}
         
-        .button:hover {
+        .button:hover {{
             transform: translateY(-2px);
-        }
+        }}
         
-        .button-png {
+        .button-png {{
             background: var(--surface1);
             color: var(--text);
             border-color: var(--overlay1);
-        }
+        }}
         
-        .button-png:hover {
+        .button-png:hover {{
             background: var(--blue);
             border-color: var(--blue);
-        }
+        }}
         
-        .button-xcf {
+        .button-xcf {{
             background: var(--surface1);
             color: var(--text);
             border-color: var(--overlay1);
-        }
+        }}
         
-        .button-xcf:hover {
+        .button-xcf:hover {{
             background: var(--teal);
             border-color: var(--teal);
-        }
+        }}
         
-        footer {
+        footer {{
             text-align: center;
             padding: 2.5rem 1rem 1rem;
             color: var(--subtext0);
             font-size: 0.95rem;
             margin-top: 2rem;
             border-top: 1px solid var(--surface0);
-        }
+        }}
         
-        @media (max-width: 768px) {
-            header {
+        @media (max-width: 768px) {{
+            header {{
                 flex-direction: column;
                 text-align: center;
-            }
+            }}
             
-            .wallpaper-grid {
+            .wallpaper-grid {{
                 grid-template-columns: 1fr;
-            }
+            }}
             
-            h1 {
+            h1 {{
                 font-size: 2rem;
-            }
-        }
+            }}
+        }}
     </style>
 </head>
 <body>
@@ -355,7 +357,7 @@ def build_html():
         f.write(
             f"""
         <footer>
-            <p>© {datetime.now().year} Sekiryl. All wallpapers are released under a <strong>Creative Commons Attribution-ShareAlike 4.0</strong> license.</p>
+            <p>© {current_year} Sekiryl. All wallpapers are released under a <strong>Creative Commons Attribution-ShareAlike 4.0</strong> license.</p>
             <p>Feel free to remix, recolor, and use them for your setup!</p>
         </footer>
     </div>
