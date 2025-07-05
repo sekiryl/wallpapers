@@ -1,109 +1,322 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<!-- Favicon Meta -->
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-<link rel="manifest" href="/assets/favicon/site.webmanifest">
-<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
-<meta name="theme-color" content="#d4875d">
-<meta charset='UTF-8'>
-<title>Sekiryl's Wallpapers</title>
-
-<style>
-body {
-    font-family: sans-serif;
-    background: #231e1c;
-    color: #e3d8c9;
-    padding: 2em;
-}
-section {
-    margin-bottom: 3em;
-}
-.wallpaper-item {
-    margin-bottom: 2em;
-}
-.wallpaper-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin: 0.5em 0;
-}
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-a.button {
-    margin-right: 1em;
-    background: #3a3530;
-    padding: 0.5em 1em;
-    border-radius: 4px;
-    color: #e3d8c9;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 0.5em;
-}
-h2 {
-    text-transform: capitalize;
-    border-bottom: 2px solid #3a3530;
-    padding-bottom: 0.3em;
-}
-hr {
-    border: 0;
-    height: 1px;
-    background: #3a3530;
-    margin: 2em 0;
-}
-footer {
-    margin-top: 4em;
-    font-size: 0.9em;
-    color: #aaa;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekiryl's Wallpapers</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    <meta name="theme-color" content="#d4875d">
+    
+    <style>
+        :root {
+            --base: #231e1c;
+            --mantle: #1a1614;
+            --crust: #0f0d0c;
+            --text: #e3d8c9;
+            --subtext1: #c5b7a3;
+            --subtext0: #a09585;
+            --overlay2: #7a6e64;
+            --overlay1: #5a5149;
+            --overlay0: #3a3530;
+            --surface2: #402f28;
+            --surface1: #352c26;
+            --surface0: #2a231e;
+            --peach: #d4875d;
+            --lavender: #7a6a9a;
+            --blue: #3a5a7a;
+            --teal: #4a8a8a;
+            --pink: #b26888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--mantle) 0%, var(--base) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--surface0);
+        }
+        
+        .logo {
+            height: 80px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(45deg, var(--peach), var(--lavender));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .last-updated {
+            color: var(--subtext1);
+            font-size: 1rem;
+            display: block;
+            margin-top: 0.25rem;
+        }
+        
+        .intro {
+            background: var(--surface0);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--overlay0);
+        }
+        
+        .intro p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        
+        .license {
+            display: inline-block;
+            background: var(--surface1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            border: 1px solid var(--overlay1);
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--peach);
+            color: var(--subtext1);
+            text-transform: capitalize;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: var(--lavender);
+        }
+        
+        .wallpaper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .wallpaper-item {
+            background: var(--surface0);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--overlay0);
+        }
+        
+        .wallpaper-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            border-color: var(--overlay1);
+        }
+        
+        .wallpaper-preview {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .wallpaper-item:hover .wallpaper-preview {
+            transform: scale(1.03);
+        }
+        
+        .wallpaper-content {
+            padding: 1.2rem;
+        }
+        
+        .wallpaper-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--subtext1);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .button-png {
+            background: var(--surface1);
+            color: var(--text);
+            border-color: var(--overlay1);
+        }
+        
+        .button-png:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+        
+        .button-xcf {
+            background: var(--surface1);
+            color: var(--text);
+            border-color: var(--overlay1);
+        }
+        
+        .button-xcf:hover {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem 1rem;
+            color: var(--subtext0);
+            font-size: 0.95rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--surface0);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .wallpaper-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-        <div style="display: flex; align-items: center; gap: 1em;">
-          <img src="assets/images/logo.png" alt="Logo" style="height: 64px;">
-          <h1 style="margin: 0;">Wallpapers by Sekiryl</h1>
+    <div class="container">
+        <header>
+            <img src="assets/images/logo.png" alt="Logo" class="logo">
+            <div class="header-content">
+                <h1>Sekiryl's Wallpapers</h1>
+                <span class="last-updated">Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</span>
+            </div>
+        </header>
+        
+        <div class="intro">
+            <p>Welcome to my wallpaper collection! All artworks are created by me and available for you to use in your personal setups.</p>
+            <p>Feel free to download, modify, and share these wallpapers according to the license terms.</p>
+            <span class="license">Creative Commons Attribution-ShareAlike 4.0</span>
         </div>
-        <p>Last updated: 2025-07-03 23:02:45</p>
-        <section>
 <h2>Catppuccin Mocha</h2>
+<div class='wallpaper-grid'>
 <div class='wallpaper-item'>
+<img src='wallpapers/Catppuccin-Mocha/katana_and_tanto-3840x2160-preview.jpg' alt='Katana And Tanto' class='wallpaper-preview'>
+<div class='wallpaper-content'>
 <div class='wallpaper-title'>Katana And Tanto</div>
-<img src='wallpapers/Catppuccin-Mocha/katana_and_tanto-3840x2160-preview.jpg' alt='Katana And Tanto'><br>
-<a class='button' href='wallpapers/Catppuccin-Mocha/katana_and_tanto-3840x2160.png' download>Download PNG</a>
-<a class='button' href='wallpapers/Catppuccin-Mocha/katana_and_tanto-3840x2160.xcf' download>Download XCF</a>
+<div class='button-group'>
+<a class='button button-png' href='wallpapers/Catppuccin-Mocha/katana_and_tanto-3840x2160.png' download>PNG</a>
+<a class='button button-xcf' href='wallpapers/Catppuccin-Mocha/katana_and_tanto-3840x2160.xcf' download>XCF</a>
+</div>
+</div>
 </div>
 <div class='wallpaper-item'>
+<img src='wallpapers/Catppuccin-Mocha/squiggly-3840x2160-preview.jpg' alt='Squiggly' class='wallpaper-preview'>
+<div class='wallpaper-content'>
 <div class='wallpaper-title'>Squiggly</div>
-<img src='wallpapers/Catppuccin-Mocha/squiggly-3840x2160-preview.jpg' alt='Squiggly'><br>
-<a class='button' href='wallpapers/Catppuccin-Mocha/squiggly-3840x2160.png' download>Download PNG</a>
-<a class='button' href='wallpapers/Catppuccin-Mocha/squiggly-3840x2160.xcf' download>Download XCF</a>
+<div class='button-group'>
+<a class='button button-png' href='wallpapers/Catppuccin-Mocha/squiggly-3840x2160.png' download>PNG</a>
+<a class='button button-xcf' href='wallpapers/Catppuccin-Mocha/squiggly-3840x2160.xcf' download>XCF</a>
 </div>
-</section>
-<section>
+</div>
+</div>
+</div>
 <h2>Rose Pine</h2>
+<div class='wallpaper-grid'>
 <div class='wallpaper-item'>
+<img src='wallpapers/Rose-Pine/katana_and_tanto-3840x2160-preview.jpg' alt='Katana And Tanto' class='wallpaper-preview'>
+<div class='wallpaper-content'>
 <div class='wallpaper-title'>Katana And Tanto</div>
-<img src='wallpapers/Rose-Pine/katana_and_tanto-3840x2160-preview.jpg' alt='Katana And Tanto'><br>
-<a class='button' href='wallpapers/Rose-Pine/katana_and_tanto-3840x2160.png' download>Download PNG</a>
-<a class='button' href='wallpapers/Rose-Pine/katana_and_tanto-3840x2160.xcf' download>Download XCF</a>
+<div class='button-group'>
+<a class='button button-png' href='wallpapers/Rose-Pine/katana_and_tanto-3840x2160.png' download>PNG</a>
+<a class='button button-xcf' href='wallpapers/Rose-Pine/katana_and_tanto-3840x2160.xcf' download>XCF</a>
+</div>
+</div>
 </div>
 <div class='wallpaper-item'>
+<img src='wallpapers/Rose-Pine/squiggly-3840x2160-preview.jpg' alt='Squiggly' class='wallpaper-preview'>
+<div class='wallpaper-content'>
 <div class='wallpaper-title'>Squiggly</div>
-<img src='wallpapers/Rose-Pine/squiggly-3840x2160-preview.jpg' alt='Squiggly'><br>
-<a class='button' href='wallpapers/Rose-Pine/squiggly-3840x2160.png' download>Download PNG</a>
-<a class='button' href='wallpapers/Rose-Pine/squiggly-3840x2160.xcf' download>Download XCF</a>
+<div class='button-group'>
+<a class='button button-png' href='wallpapers/Rose-Pine/squiggly-3840x2160.png' download>PNG</a>
+<a class='button button-xcf' href='wallpapers/Rose-Pine/squiggly-3840x2160.xcf' download>XCF</a>
 </div>
-</section>
+</div>
+</div>
+</div>
 
-<footer>
-<p>© 2025 Sekiryl. All wallpapers are released under a <strong>Creative Commons Attribution-ShareAlike 4.0</strong> license.</p>
-<p>Feel free to remix, recolor, and use them for your setup!</p>
-</footer>
+        <footer>
+            <p>© 2025 Sekiryl. All wallpapers are released under a <strong>Creative Commons Attribution-ShareAlike 4.0</strong> license.</p>
+            <p>Feel free to remix, recolor, and use them for your setup!</p>
+        </footer>
+    </div>
 </body>
 </html>
