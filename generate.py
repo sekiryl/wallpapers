@@ -4,27 +4,47 @@ from PIL import Image
 from datetime import datetime
 import subprocess
 import re
+import argparse  # Added for argument parsing
 
 ROOT_DIR = Path(__file__).parent.resolve()
 WALLPAPER_DIR = ROOT_DIR / "wallpapers"
 HTML_FILE = ROOT_DIR / "index.html"
 
 
-def generate_previews():
+def generate_previews(force=False):
     print("[+] Generating previews...")
     for folder in WALLPAPER_DIR.iterdir():
         if not folder.is_dir():
             continue
         for file in folder.glob("*.png"):
             preview_path = file.with_stem(file.stem + "-preview").with_suffix(".jpg")
-            if not preview_path.exists():
+
+            # Check if regeneration is needed
+            regenerate = False
+            if force:
+                regenerate = True
+                reason = "--force flag used"
+            elif not preview_path.exists():
+                regenerate = True
+                reason = "preview missing"
+            else:
+                # Check modification times
+                file_mtime = file.stat().st_mtime
+                preview_mtime = preview_path.stat().st_mtime
+                if file_mtime > preview_mtime:
+                    regenerate = True
+                    reason = "source file modified"
+
+            if regenerate:
                 try:
                     with Image.open(file) as img:
                         preview = img.resize((720, int(720 * img.height / img.width)))
                         preview.convert("RGB").save(preview_path, "JPEG", quality=85)
-                        print(f"  - Created preview: {preview_path}")
+                        print(f"  - Regenerated preview ({reason}): {preview_path}")
                 except Exception as e:
                     print(f"  ! Error processing {file}: {e}")
+            else:
+                print(f"  ✓ Preview up-to-date: {preview_path}")
 
 
 def format_wallpaper_name(filename):
@@ -383,7 +403,16 @@ def git_push():
 
 
 def main():
-    generate_previews()
+    # Setup argument parser
+    parser = argparse.ArgumentParser(
+        description="Generate wallpaper previews and index.html"
+    )
+    parser.add_argument(
+        "--force", action="store_true", help="Force regenerate all preview images"
+    )
+    args = parser.parse_args()
+
+    generate_previews(force=args.force)
     build_html()
     git_push()
 
