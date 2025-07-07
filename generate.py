@@ -95,7 +95,7 @@ def build_html():
     "creator": {{
       "@type": "Person",
       "name": "Sekiryl",
-      "url": "https://sekiryl.dev"
+      "url": "https://sekiryl.is-a.dev"
     }},
     "description": "A collection of high-resolution wallpapers created by Sekiryl, available in PNG and editable XCF formats.",
     "image": "https://walls.sekiryl.is-a.dev/assets/images/logo.png"
