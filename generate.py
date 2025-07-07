@@ -89,7 +89,7 @@ def build_html():
     <script type="application/ld+json">
     {{
     "@context": "https://schema.org",
-    "@type": "CreativeWorkCollection",
+    "@type": "CreativeWork",
     "name": "Sekiryl's Wallpapers",
     "url": "https://sekiryl.is-a.dev",
     "creator": {{
