@@ -75,6 +75,32 @@ def build_html():
     <link rel="manifest" href="/assets/favicon/site.webmanifest">
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
     <meta name="theme-color" content="#d4875d">
+    <meta name="description" content="Download high-quality, original wallpapers by Sekiryl. Includes PNG and XCF files for customization." />
+    <meta name="keywords" content="Sekiryl, wallpapers, original art, XCF wallpapers, PNG wallpapers, digital art, design" />
+    <meta name="author" content="Sekiryl" />
+    <link rel="canonical" href="https://walls.sekiryl.is-a.dev" />
+
+    <meta property="og:title" content="Sekiryl's Wallpapers" />
+    <meta property="og:description" content="A collection of original wallpapers designed by Sekiryl. Free to download in high resolution." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://walls.sekiryl.is-a.dev" />
+    <meta property="og:image" content="https://walls.sekiryl.is-a.dev/assets/images/logo.png" />
+
+    <script type="application/ld+json">
+    {{
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkCollection",
+    "name": "Sekiryl's Wallpapers",
+    "url": "https://sekiryl.is-a.dev",
+    "creator": {{
+      "@type": "Person",
+      "name": "Sekiryl",
+      "url": "https://sekiryl.dev"
+    }},
+    "description": "A collection of high-resolution wallpapers created by Sekiryl, available in PNG and editable XCF formats.",
+    "image": "https://walls.sekiryl.is-a.dev/assets/images/logo.png"
+    }}
+    </script>
     
     <style>
         :root {{
